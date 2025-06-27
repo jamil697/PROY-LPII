@@ -12,7 +12,7 @@
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"];?>" class="formulario">
         <div class="form-group">
             <label for="username" class="form-label">Usuario:</label><br>
-            <input type="text" name="username" placeholder="Ingrese su usuario" class="form-control"><br>
+            <input type="text" name="username" placeholder="Ingrese su usuario por favor" class="form-control"><br>
         </div>
         <div class="form-group">
             <label for="password" class="form-label">Contraseña:</label><br>
