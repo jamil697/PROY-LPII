@@ -1,60 +1,85 @@
 <?php
 
-require_once __DIR__ . '/../modelos/Expediente.php';
+require_once __DIR__ . "/../Config/Conn.php";
 
-class ExpedienteController {
-    
-    public function guardar(array $datos) {
-        $expediente = new Expediente();
-        $resultado = $expediente->guardar(
-            $datos["titulo"],
-            $datos["descripcion"],
-            $datos["cliente_id"],
-            $datos["abogado_id"]
-        );
 
-        if ($resultado != 0) {
-            return "Expediente registrado";
-        } else {
-            return "Error: No se registró el expediente";
-        }
+class Expediente {
+    private $id;
+    private $titulo;
+    private $descripcion;
+    private $fecha_apertura;
+    private $id_abogado;
+    private $id_cliente;
+    private $estado;
+
+    public function __construct() {
+        // Constructor vacío
     }
 
     public function mostrar() {
-        $expediente = new Expediente();
-        return $expediente->mostrar();
-    }
+        $conn = new Conn();
+        $conexion = $conn->conectar();
 
-    public function eliminar($id) {
-        $expediente = new Expediente();
-        $resultado = $expediente->eliminar($id);
+        $sql = "SELECT e.id, e.titulo, e.descripcion, e.fecha_apertura, 
+                       e.estado, a.nombres AS abogado, c.nombres AS cliente
+                FROM expedientes e
+                JOIN usuarios a ON e.id_abogado = a.id
+                JOIN usuarios c ON e.id_cliente = c.id
+                ORDER BY e.fecha_apertura DESC";
 
-        if ($resultado != 0) {
-            header("location: verExpediente.php");
-        } else {
-            return "Error: No se eliminó el expediente";
-        }
+        $resultado = $conexion->query($sql);
+        $conn->cerrar();
+        return $resultado;
     }
 
     public function buscar(int $id) {
-        $expediente = new Expediente();
-        return $expediente->buscar($id);
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+
+        $sql = "SELECT * FROM expedientes WHERE id = $id";
+        $resultado = $conexion->query($sql);
+        $conn->cerrar();
+        return $resultado;
     }
 
-    public function actualizar(array $datos) {
-        $expediente = new Expediente();
-        $resultado = $expediente->actualizar(
-            $datos["id"],
-            $datos["titulo"],
-            $datos["descripcion"],
-            $datos["cliente_id"],
-            $datos["abogado_id"]
-        );
+    public function guardar($titulo, $descripcion, $id_abogado, $id_cliente) {
+        $conn = new Conn();
+        $conexion = $conn->conectar();
 
-        if ($resultado != 0) {
-            return "Expediente actualizado";
-        } else {
-            return "Error: No se pudo actualizar el expediente";
-        }
+        $fecha = date('Y-m-d'); // Fecha actual
+
+        $sql = "INSERT INTO expedientes (titulo, descripcion, fecha_apertura, id_abogado, id_cliente, estado)
+                VALUES ('$titulo', '$descripcion', '$fecha', $id_abogado, $id_cliente, 'abierto')";
+
+        $resultado = $conexion->exec($sql);
+        $conn->cerrar();
+        return $resultado;
+    }
+
+    public function eliminar($id) {
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+
+        $sql = "DELETE FROM expedientes WHERE id = $id";
+        $resultado = $conexion->exec($sql);
+        $conn->cerrar();
+        return $resultado;
+    }
+
+    public function actualizar($id, $titulo, $descripcion, $id_abogado, $id_cliente, $estado) {
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+
+        $sql = "UPDATE expedientes 
+                SET titulo = '$titulo',
+                    descripcion = '$descripcion',
+                    id_abogado = $id_abogado,
+                    id_cliente = $id_cliente,
+                    estado = '$estado'
+                WHERE id = $id";
+
+        $resultado = $conexion->exec($sql);
+        $conn->cerrar();
+        return $resultado;
     }
 }
