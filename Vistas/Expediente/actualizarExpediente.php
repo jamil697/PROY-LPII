@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../../controladores/ExpedienteController.php";
 require_once "../../config/Conn.php";
 
@@ -21,7 +22,14 @@ foreach ($expediente as $exp) {
 
 $mensaje = "";
 if (!empty($_POST)) {
-    $mensaje = $ec->actualizar($_POST);
+    $resultado = $ec->actualizar($_POST);
+
+    if ($resultado === true) {
+        header("Location: verExpediente.php"); // ✅ Redirige si se guardó correctamente
+        exit;
+    } else {
+        $mensaje = $resultado;
+    }
 }
 
 $conn = new Conn();
@@ -31,6 +39,8 @@ $clientes = $conexion->query("SELECT id, nombres, apellidos FROM usuarios WHERE 
 $conn->cerrar();
 
 require_once "../../layouts/header.php";
+
+$tipo_usuario = $_SESSION['tipo'] ?? 'cliente';
 ?>
 
 <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-blue-200 px-4 py-10">
@@ -106,24 +116,24 @@ require_once "../../layouts/header.php";
                     Guardar Cambios
                 </button>
             </div>
+
             <?php
-            $dashboard_url = "#"; // por defecto, en caso de que el rol no sea reconocido
+            $dashboard_url = "../../Dashboards/dashboard_cliente.php";
             if ($tipo_usuario === 'admin') {
                 $dashboard_url = "../../Dashboards/dashboard_admin.php";
             } elseif ($tipo_usuario === 'abogado') {
                 $dashboard_url = "../../Dashboards/dashboard_abogado.php";
-            } elseif ($tipo_usuario === 'cliente') {
-                $dashboard_url = "../../Dashboards/dashboard_cliente.php";
             }
             ?>
 
-            <a href="<?= $dashboard_url ?>" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white px-5 py-2 rounded-lg font-bold shadow-lg text-base transition transform hover:-translate-y-1">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                Retroceder
-            </a>
-            
+            <div class="text-center pt-4">
+                <a href="<?= $dashboard_url ?>" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white px-5 py-2 rounded-lg font-bold shadow-lg text-base transition transform hover:-translate-y-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Retroceder
+                </a>
+            </div>
         </form>
     </div>
 </div>

@@ -117,16 +117,18 @@ $expedientes = $ec->mostrar();
             </table>
             
         </div>
-        <div class="flex justify-center mt-6">
-            <a href="registrarExpediente.php"
-            class="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-5 py-2 rounded-lg font-bold shadow-lg transition transform hover:-translate-y-1">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 4v16m8-8H4" />
-                </svg>
-                Registrar nuevo expediente
-            </a>
-        </div>
+        <?php if ($tipo_usuario === 'admin'): ?>
+            <div class="flex justify-center mt-6">
+                <a href="registrarExpediente.php"
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-5 py-2 rounded-lg font-bold shadow-lg transition transform hover:-translate-y-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4v16m8-8H4" />
+                    </svg>
+                    Registrar nuevo expediente
+                </a>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 

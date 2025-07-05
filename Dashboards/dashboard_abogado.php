@@ -16,7 +16,7 @@
                 </svg>
                 Expedientes
             </a>
-            <a href="verCitas.php" class="flex items-center gap-2 text-white hover:text-green-200 transition font-medium">
+            <a href="/PROY/PROY-LPII/Vistas/Cita/verCita.php" class="flex items-center gap-2 text-white hover:text-green-200 transition font-medium">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
@@ -56,7 +56,7 @@
                 <h2 class="text-xl font-bold text-green-800 mb-1">Expedientes Asignados</h2>
                 <p class="text-gray-500">Revisa y gestiona los casos asignados.</p>
             </a>
-            <a href="verCitas.php" class="group bg-white shadow-lg p-8 rounded-xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-200">
+            <a href="/PROY/PROY-LPII/Vistas/Cita/verCita.php" class="group bg-white shadow-lg p-8 rounded-xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-200">
                 <div class="bg-green-100 rounded-full p-4 mb-4 group-hover:bg-green-200 transition">
                     <svg class="h-10 w-10 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

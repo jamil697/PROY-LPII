@@ -52,10 +52,12 @@ class ExpedienteController {
             $datos["estado"] // debe ser: abierto, cerrado o en_proceso
         );
 
+        // Si la actualización fue exitosa
         if ($resultado != 0) {
-            return "Expediente actualizado correctamente.";
+            return true; // ✅ Esto permite redirigir en actualizarExpediente.php
         } else {
             return "Error: No se pudo actualizar el expediente.";
         }
     }
+
 }
