@@ -1,37 +1,51 @@
 <?php
 
-require_once "Conn.php";
+require_once __DIR__."../../Config/Coon.php";
 
-class Usuario{
+class Usuario {
 
-    public function __construct(){
-        // Constructor vacío
-    }
+    public function __construct() {}
 
-    public function buscar(int $id){
+    public function buscar(int $id) {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sqlSelect = "SELECT * FROM usuario WHERE id = $id";
-        $resultado = $conexion->query($sqlSelect);
+
+        $sql = "SELECT * FROM usuarios WHERE id = ?";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute([$id]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
         $conn->cerrar();
         return $resultado;
     }
 
-    public function mostrar(){
+    public function mostrar() {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sqlSelect = "SELECT * FROM usuario";
-        $resultado = $conexion->query($sqlSelect);
+
+        $sql = "SELECT * FROM usuarios";
+        $resultado = $conexion->query($sql);
+
         $conn->cerrar();
         return $resultado;
     }
 
-    public function guardar($username, $password, $nombres, $apellidos, $tipo, $escuela, $email) {
+    public function guardar($username, $password, $nombres, $apellidos, $tipo, $email) {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sqlInsert = "INSERT INTO usuario(username, password, nombres, apellidos, tipo, id_escuela, email) 
-                      VALUES('$username', '$password', '$nombres', '$apellidos', '$tipo', '$escuela', '$email')";
-        $resultado = $conexion->exec($sqlInsert);
+
+        $sql = "INSERT INTO usuarios (username, password, nombres, apellidos, tipo, email)
+                VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conexion->prepare($sql);
+        $resultado = $stmt->execute([
+            $username,
+            $password,
+            $nombres,
+            $apellidos,
+            $tipo,
+            $email
+        ]);
+
         $conn->cerrar();
         return $resultado;
     }
@@ -39,32 +53,49 @@ class Usuario{
     public function eliminar($id) {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sqlDelete = "DELETE FROM usuario WHERE id = $id";
-        $resultado = $conexion->exec($sqlDelete);
+
+        $sql = "DELETE FROM usuarios WHERE id = ?";
+        $stmt = $conexion->prepare($sql);
+        $resultado = $stmt->execute([$id]);
+
         $conn->cerrar();
         return $resultado;
     }
 
-    public function actualizar($username, $nombres, $apellidos, $tipo, $id){
+    public function actualizar($username, $nombres, $apellidos, $tipo, $email, $id) {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sqlUpdate = "UPDATE usuario SET 
-                        username = '$username',
-                        nombres = '$nombres', 
-                        apellidos = '$apellidos', 
-                        tipo = '$tipo' 
-                      WHERE id = $id";
 
-        $resultado = $conexion->exec($sqlUpdate);
+        $sql = "UPDATE usuarios SET 
+                    username = ?, 
+                    nombres = ?, 
+                    apellidos = ?, 
+                    tipo = ?, 
+                    email = ?
+                WHERE id = ?";
+        $stmt = $conexion->prepare($sql);
+        $resultado = $stmt->execute([
+            $username,
+            $nombres,
+            $apellidos,
+            $tipo,
+            $email,
+            $id
+        ]);
+
         $conn->cerrar();
         return $resultado;
     }
 
-    public function buscarPorUsername($username){
+    public function buscarPorUsername($username) {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sqlSelect = "SELECT * FROM usuario WHERE username = '$username'";
-        $resultado = $conexion->query($sqlSelect);
+
+        $sql = "SELECT * FROM usuarios WHERE username = ?";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute([$username]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
         $conn->cerrar();
         return $resultado;
     }

@@ -1,6 +1,6 @@
 <?php
 
-require_once "Conn.php";
+require_once __DIR__."../../Config/Coon.php";
 
 class Abogado {
 
@@ -21,8 +21,7 @@ class Abogado {
         $conexion = $conn->conectar();
 
         $sql = "INSERT INTO abogados (id_usuario, colegiatura, especialidad, experiencia) 
-                VALUES ($id_usuario, $colegiatura, $especialidad, $experiencia)";
-
+                VALUES (?, ?, ?, ?)";
         $stmt = $conexion->prepare($sql);
         $resultado = $stmt->execute([
             $this->id_usuario,
@@ -40,11 +39,10 @@ class Abogado {
         $conexion = $conn->conectar();
 
         $sql = "UPDATE abogados SET 
-                    colegiatura = $colegiatura, 
-                    especialidad = $especialidad, 
-                    experiencia = $experiencia,
-                WHERE id_usuario = $id_usuario";
-
+                    colegiatura = ?, 
+                    especialidad = ?, 
+                    experiencia = ? 
+                WHERE id_usuario = ?";
         $stmt = $conexion->prepare($sql);
         $resultado = $stmt->execute([
             $this->colegiatura,
@@ -57,17 +55,23 @@ class Abogado {
         return $resultado;
     }
 
-    public function eliminar(){
-        $conn = new Conn();
-        $conexion = $conn->conectar();
+   public function eliminar() {
+    $conn = new Conn();
+    $conexion = $conn->conectar();
 
-        $sql = "DELETE FROM abogados WHERE id_usuario = ?";
-        $stmt = $conexion->prepare($sql);
-        $resultado = $stmt->execute([$this->id_usuario]);
+    // 1. Eliminar de la tabla abogados
+    $sql1 = "DELETE FROM abogados WHERE id_usuario = ?";
+    $stmt1 = $conexion->prepare($sql1);
+    $stmt1->execute([$this->id_usuario]);
 
-        $conn->cerrar();
-        return $resultado;
-    }
+    // 2. Eliminar de la tabla usuarios
+    $sql2 = "DELETE FROM usuarios WHERE id = ?";
+    $stmt2 = $conexion->prepare($sql2);
+    $resultado = $stmt2->execute([$this->id_usuario]);
+
+    $conn->cerrar();
+    return $resultado;
+}
 
     public function mostrar(){
         $conn = new Conn();
@@ -82,16 +86,20 @@ class Abogado {
         return $resultado;
     }
 
-    public function buscar(){
-        $conn = new Conn();
-        $conexion = $conn->conectar();
+   public function buscar(){
+    $conn = new Conn();
+    $conexion = $conn->conectar();
 
-        $sql = "SELECT * FROM abogados WHERE id_usuario = $id_usuario";
-        $stmt = $conexion->prepare($sql);
-        $stmt->execute([$this->id_usuario]);
-        $resultado = $stmt->fetch();
+    $sql = "SELECT a.*, u.username, u.nombres, u.apellidos, u.email 
+            FROM abogados a
+            JOIN usuarios u ON a.id_usuario = u.id
+            WHERE a.id_usuario = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->execute([$this->id_usuario]);
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);  // 👈 importante
 
-        $conn->cerrar();
-        return $resultado;
-    }
+    $conn->cerrar();
+    return $resultado;
+}
+
 }
