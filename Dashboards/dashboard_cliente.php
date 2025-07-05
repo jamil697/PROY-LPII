@@ -9,7 +9,7 @@
             </svg>
             <span class="text-2xl font-bold text-white tracking-wide">Panel del Cliente</span>
         </div>
-        <a href="logout.php" class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold shadow transition">
+        <a href="/PROY/PROY-LPII/logout.php" class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold shadow transition">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7" />
             </svg>
@@ -19,7 +19,7 @@
 
     <main class="max-w-4xl mx-auto py-12 px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="verExpediente.php" class="group bg-white shadow-lg p-8 rounded-xl hover:bg-purple-50 transition flex flex-col items-center text-center border border-transparent hover:border-purple-200">
+            <a href="/PROY/PROY-LPII/Vistas/Expediente/verExpediente.php" class="group bg-white shadow-lg p-8 rounded-xl hover:bg-purple-50 transition flex flex-col items-center text-center border border-transparent hover:border-purple-200">
                 <div class="bg-purple-100 rounded-full p-4 mb-4 group-hover:bg-purple-200 transition">
                     <svg class="h-10 w-10 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6a2 2 0 002-2v-5a2 2 0 00-2-2h-2a2 2 0 00-2 2v5a2 2 0 002 2z" />

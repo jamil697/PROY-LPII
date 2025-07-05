@@ -1,35 +1,61 @@
 <?php
 
-require_once "modelos/Expediente.php";
+require_once __DIR__ . '/../modelos/Expediente.php';
 
 class ExpedienteController {
-    private $expediente;
+    
+    public function guardar(array $datos) {
+        $expediente = new Expediente();
+        $resultado = $expediente->guardar(
+            $datos["titulo"],
+            $datos["descripcion"],
+            $datos["id_abogado"],
+            $datos["id_cliente"]
+        );
 
-    public function __construct() {
-        $this->expediente = new Expediente();
+        if ($resultado != 0) {
+            return "Expediente registrado correctamente.";
+        } else {
+            return "Error: No se registró el expediente.";
+        }
     }
 
-    public function mostrarTodos() {
-        return $this->expediente->mostrar();
-    }
-
-    public function mostrarPorCliente($id) {
-        return $this->expediente->mostrarPorCliente($id);
-    }
-
-    public function buscar($id) {
-        return $this->expediente->buscar($id);
-    }
-
-    public function guardar($titulo, $descripcion, $id_abogado, $id_cliente) {
-        return $this->expediente->guardar($titulo, $descripcion, $id_abogado, $id_cliente);
+    public function mostrar() {
+        $expediente = new Expediente();
+        return $expediente->mostrar();
     }
 
     public function eliminar($id) {
-        return $this->expediente->eliminar($id);
+        $expediente = new Expediente();
+        $resultado = $expediente->eliminar($id);
+
+        if ($resultado != 0) {
+            header("Location: verExpediente.php");
+        } else {
+            return "Error: No se eliminó el expediente.";
+        }
     }
 
-    public function actualizar($id, $titulo, $descripcion, $id_abogado, $id_cliente, $estado) {
-        return $this->expediente->actualizar($id, $titulo, $descripcion, $id_abogado, $id_cliente, $estado);
+    public function buscar(int $id) {
+        $expediente = new Expediente();
+        return $expediente->buscar($id);
+    }
+
+    public function actualizar(array $datos) {
+        $expediente = new Expediente();
+        $resultado = $expediente->actualizar(
+            $datos["id"],
+            $datos["titulo"],
+            $datos["descripcion"],
+            $datos["id_abogado"],
+            $datos["id_cliente"],
+            $datos["estado"] // debe ser: abierto, cerrado o en_proceso
+        );
+
+        if ($resultado != 0) {
+            return "Expediente actualizado correctamente.";
+        } else {
+            return "Error: No se pudo actualizar el expediente.";
+        }
     }
 }

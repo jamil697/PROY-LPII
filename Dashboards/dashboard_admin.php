@@ -19,7 +19,7 @@
                 </svg>
                 Usuarios
             </a>
-            <a href="../vistas/Expedientes/verExpedientes.php"
+            <a href="/PROY/PROY-LPII/Vistas/Expediente/verExpediente.php"
                 class="flex items-center gap-2 text-white hover:text-blue-200 transition font-medium">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -67,7 +67,7 @@
                 <h2 class="text-xl font-bold text-blue-800 mb-1">Gestión de Usuarios</h2>
                 <p class="text-gray-500">Crear, editar o eliminar usuarios.</p>
             </a>
-            <a href="../vistas/Expedientes/verExpedientes.php"
+            <a href="/PROY/PROY-LPII/Vistas/Expediente/verExpediente.php"
                 class="group bg-white shadow-lg p-8 rounded-xl hover:bg-blue-50 transition flex flex-col items-center text-center border border-transparent hover:border-blue-200">
                 <div class="bg-blue-100 rounded-full p-4 mb-4 group-hover:bg-blue-200 transition">
                     <svg class="h-10 w-10 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -15,6 +15,7 @@
             background-color: #f1f5f9; /* Tailwind: bg-slate-100 */
         }
     </style>
+
 </head>
 <body class="text-gray-800">
 
