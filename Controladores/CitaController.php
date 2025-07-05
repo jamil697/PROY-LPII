@@ -28,15 +28,16 @@ class CitaController {
     }
 
     public function eliminar($id) {
-        $cita = new Cita();
-        $resultado = $cita->eliminar($id);
+    $cita = new Cita();
+    $resultado = $cita->eliminar($id);
 
-        if ($resultado != 0) {
-            header("Location: verCita.php");
-        } else {
-            return "Error: No se eliminó la cita.";
-        }
+    if ($resultado != 0) {
+        return true;
+    } else {
+        return false;
     }
+}
+
 
 
     public function buscar(int $id) {
