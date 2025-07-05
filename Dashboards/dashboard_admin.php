@@ -35,7 +35,7 @@ $nombreUsuario = $_SESSION['nombres'] ?? 'Administrador';
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 11c0-1.104.896-2 2-2s2 .896 2 2-.896 2-2 2-2-.896-2-2zm0 0V7m0 4v4m0 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z" />
             </svg>
-            Bienvenido, <?= htmlspecialchars($nombreUsuario) ?> (Administrador)
+            Bienvenido, <?= htmlspecialchars($nombreUsuario) ?>
         </h1>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

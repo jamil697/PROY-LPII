@@ -78,34 +78,38 @@ $expedientes = $ec->mostrar();
                                     </span>
 
                                 </td>
-                                <?php if ($tipo_usuario === 'admin' || $tipo_usuario === 'abogado'): ?>
+                                <?php if ($tipo_usuario === 'abogado'): ?>
                                     <td class="px-2 py-3 text-center">
                                         <a href="actualizarExpediente.php?id=<?= $exp['id'] ?>"
-                                           class="inline-flex items-center justify-center text-yellow-500 hover:text-yellow-700 transition"
-                                           title="Editar">
+                                        class="inline-flex items-center justify-center text-yellow-500 hover:text-yellow-700 transition"
+                                        title="Editar">
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                      d="M15.232 5.232l3.536 3.536M9 13l6-6m2 2l-6 6M4 20h4l10-10a2 2 0 
-                                                         00-2.828-2.828L5.172 17.172A2 2 0 
-                                                         004 18.586V20z" />
-                                            </svg>
-                                        </a>
-                                    </td>
-                                    <td class="px-2 py-3 text-center">
-                                        <a href="eliminarExpediente.php?id=<?= $exp['id'] ?>"
-                                           onclick="return confirm('¿Estás seguro de eliminar este expediente?')"
-                                           class="inline-flex items-center justify-center text-red-600 hover:text-red-800 transition"
-                                           title="Eliminar">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                      d="M19 7l-.867 12.142A2 2 0
-                                                         0116.138 21H7.862a2 2 0
-                                                         01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1
-                                                         1 0 00-1-1h-4a1 1 0 00-1 1v3h6z" />
+                                                    d="M15.232 5.232l3.536 3.536M9 13l6-6m2 2l-6 6M4 20h4l10-10a2 2 0 
+                                                        00-2.828-2.828L5.172 17.172A2 2 0 
+                                                        004 18.586V20z" />
                                             </svg>
                                         </a>
                                     </td>
                                 <?php endif; ?>
+
+                                <?php if ($tipo_usuario === 'admin'): ?>
+                                    <td class="px-2 py-3 text-center">
+                                        <a href="eliminarExpediente.php?id=<?= $exp['id'] ?>"
+                                        onclick="return confirm('¿Estás seguro de eliminar este expediente?')"
+                                        class="inline-flex items-center justify-center text-red-600 hover:text-red-800 transition"
+                                        title="Eliminar">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0
+                                                        0116.138 21H7.862a2 2 0
+                                                        01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1
+                                                        1 0 00-1-1h-4a1 1 0 00-1 1v3h6z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+                                <?php endif; ?>
+
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>

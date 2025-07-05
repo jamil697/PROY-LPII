@@ -128,21 +128,25 @@ $citas = $cc->mostrar();
                                         <?php endif; ?>
                                     </td>
                                     <td class="px-6 py-4 text-center">
-                                        <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] === 'admin'): ?>
+                                        <?php if (isset($_SESSION['tipo'])): ?>
                                             <div class="flex justify-center space-x-2">
-                                                <a href="actualizarCita.php?id=<?= $cita['id'] ?>" 
-                                                   class="inline-flex items-center px-3 py-1.5 bg-slate-600 text-white text-xs font-medium rounded-md hover:bg-slate-700 transition">
-                                                    ✏️ Editar
-                                                </a>
-                                                <a href="eliminarCita.php?id=<?= $cita['id'] ?>" 
-                                                   onclick="return confirm('¿Estás seguro de eliminar esta cita?')"
-                                                   class="inline-flex items-center px-3 py-1.5 bg-red-600 text-white text-xs font-medium rounded-md hover:bg-red-700 transition">
-                                                    🗑️ Eliminar
-                                                </a>
+                                                <?php if ($_SESSION['tipo'] === 'admin' || $_SESSION['tipo'] === 'abogado'): ?>
+                                                    <a href="actualizarCita.php?id=<?= $cita['id'] ?>" 
+                                                    class="inline-flex items-center px-3 py-1.5 bg-slate-600 text-white text-xs font-medium rounded-md hover:bg-slate-700 transition">
+                                                        ✏️ Editar
+                                                    </a>
+                                                <?php endif; ?>
+
+                                                <?php if ($_SESSION['tipo'] === 'admin'): ?>
+                                                    <a href="eliminarCita.php?id=<?= $cita['id'] ?>" 
+                                                    onclick="return confirm('¿Estás seguro de eliminar esta cita?')"
+                                                    class="inline-flex items-center px-3 py-1.5 bg-red-600 text-white text-xs font-medium rounded-md hover:bg-red-700 transition">
+                                                        🗑️ Eliminar
+                                                    </a>
+                                                <?php endif; ?>
                                             </div>
-                                        <?php else: ?>
-                                            <span class="text-slate-400 text-xs italic">Sin permisos</span>
                                         <?php endif; ?>
+
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

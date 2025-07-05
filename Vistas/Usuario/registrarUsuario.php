@@ -58,7 +58,6 @@ if (!empty($_POST)) {
                     <option value="admin">Administrador</option>
                     <option value="abogado">Abogado</option>
                     <option value="cliente">Cliente</option>
-                    <option value="secretaria">Secretaria</option>
                 </select>
             </div>
 

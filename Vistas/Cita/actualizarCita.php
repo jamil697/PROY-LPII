@@ -1,6 +1,13 @@
 <?php
 require_once "../../controladores/CitaController.php";
 
+// Procesar actualización antes de enviar HTML
+if (!empty($_POST)) {
+    $cc = new CitaController();
+    $cc->actualizar($_POST); // Esto internamente puede usar header(), y debe ejecutarse antes del HTML
+    exit;
+}
+
 // Obtener ID de la cita
 $id = $_GET['id'] ?? $_POST['id'] ?? null;
 
@@ -64,7 +71,7 @@ foreach ($cita as $c) {
 
             <div class="flex justify-between pt-3">
                 <a href="verCita.php"
-                    class="bg-gray-400 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-600 transition text-center">
+                   class="bg-gray-400 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-600 transition text-center">
                     Cancelar
                 </a>
                 <button type="submit"
@@ -75,11 +82,5 @@ foreach ($cita as $c) {
         </form>
     </div>
 </div>
-
-<?php
-if (!empty($_POST)) {
-    echo $cc->actualizar($_POST);
-}
-?>
 
 <?php require_once(__DIR__ . "/../../layouts/footer.php"); ?>
