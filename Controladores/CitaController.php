@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__ . '../../modelos/Cita.php';
+require_once __DIR__ . '/../Modelos/Cita.php';
+require_once __DIR__ . '/../Config/Conn.php';
+
 
 class CitaController {
 

@@ -1,6 +1,8 @@
 <?php
 
-require_once "../../Config/Conn.php";
+
+require_once __DIR__ . '/../Config/Conn.php';
+
 
 class Cita {
     private $id;
