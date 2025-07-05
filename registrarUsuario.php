@@ -1,12 +1,12 @@
 <?php
-require_once "../../layouts/header.php";
-require_once __DIR__ . "/../../controladores/UsuarioController.php";
+require_once "layouts/header.php";
+require_once "controladores/UsuarioController.php";
 
 if (!empty($_POST)) {
     $uc = new UsuarioController();
     $resultado = $uc->guardar($_POST);
     if ($resultado) {
-        header("Location: verUsuario.php");
+        header("Location: login.php");
         exit;
     } else {
         echo "<div class='text-red-600'>No se pudo registrar al usuario.</div>";
@@ -75,7 +75,3 @@ if (!empty($_POST)) {
         </form>
     </div>
 </div>
-
-<?php
-require_once "../../layouts/footer.php";
-?>
