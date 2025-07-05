@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../modelos/Cita.php';
+require_once __DIR__ . '../../modelos/Cita.php';
 
 class CitaController {
 
@@ -9,13 +9,14 @@ class CitaController {
         $resultado = $cita->guardar(
             $datos["id_expediente"],
             $datos["fecha"],
-            $datos["asunto"]
+            $datos["asunto"],
+            $datos["recordatorio_enviado"] ?? 0
         );
 
         if ($resultado != 0) {
-            return "Cita registrada correctamente";
+            return "Cita registrada correctamente.";
         } else {
-            return "Error: No se registró la cita";
+            return "Error: No se registró la cita.";
         }
     }
 
@@ -27,14 +28,16 @@ class CitaController {
     public function eliminar($id) {
         $cita = new Cita();
         $resultado = $cita->eliminar($id);
+
         if ($resultado != 0) {
-            header("location: verCitas.php");
+            header("Location: verCita.php");
         } else {
-            return "Error: No se eliminó la cita";
+            return "Error: No se eliminó la cita.";
         }
     }
 
-    public function buscar($id) {
+
+    public function buscar(int $id) {
         $cita = new Cita();
         return $cita->buscar($id);
     }
@@ -50,9 +53,9 @@ class CitaController {
         );
 
         if ($resultado != 0) {
-            return "Cita actualizada correctamente";
+            header("Location: verCita.php");
         } else {
-            return "Error: No se pudo actualizar la cita";
+            return "Error: No se pudo actualizar la cita.";
         }
     }
 
