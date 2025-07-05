@@ -9,9 +9,9 @@ class Conn{
 
     public function __construct()
     {
-        $this->dsn = "mysql:host=localhost:3306;dbname=sistema";
+        $this->dsn = "mysql:host=localhost:3307;dbname=sistema";
         $this->usuario = "root";
-        $this->pass = "jamil131901";
+        $this->pass = "baboy2018";
     }
 
     public function conectar(){

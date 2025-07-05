@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../modelos/Expediente.php';
+require_once "Modelos/Expediente.php";
 
 class ExpedienteController {
 

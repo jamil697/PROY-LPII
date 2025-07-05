@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../modelos/Cita.php';
+require_once "Modelos/Cita.php";
 
 class CitaController {
 
