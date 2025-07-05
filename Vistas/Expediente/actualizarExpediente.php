@@ -1,17 +1,10 @@
 <?php
 require_once "../../controladores/ExpedienteController.php";
 
-$id = null;
-
 if (!empty($_GET['id'])) {
     $id = (int) $_GET['id'];
 } elseif (!empty($_POST['id'])) {
     $id = (int) $_POST['id'];
-}
-
-if (!$id) {
-    echo "Error: ID no proporcionado.";
-    exit;
 }
 
 $ec = new ExpedienteController();

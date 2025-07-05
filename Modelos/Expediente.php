@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../Config/Conn.php";
+require_once __DIR__ . "../../Config/Conn.php";
 
 class Expediente {
     private $id;
@@ -35,7 +35,11 @@ class Expediente {
         $conn = new Conn();
         $conexion = $conn->conectar();
 
-        $sql = "SELECT * FROM expedientes WHERE id = $id";
+        $sql = "SELECT e.*, a.nombres AS nombre_abogado, c.nombres AS nombre_cliente
+                FROM expedientes e JOIN usuarios a ON e.id_abogado = a.id 
+                JOIN usuarios c ON e.id_cliente = c.id
+                WHERE e.id = $id";
+
         $resultado = $conexion->query($sql);
         $conn->cerrar();
         return $resultado;
