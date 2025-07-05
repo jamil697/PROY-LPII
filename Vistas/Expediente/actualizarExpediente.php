@@ -9,7 +9,6 @@ if (!empty($_GET['id'])) {
     $id = (int) $_POST['id'];
 }
 
-// Si no se recibió un ID válido, mostrar error y detener
 if (!$id) {
     echo "Error: ID no proporcionado.";
     exit;
