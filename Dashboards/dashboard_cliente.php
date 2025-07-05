@@ -19,7 +19,7 @@
 
     <main class="max-w-4xl mx-auto py-12 px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="verMisExpedientes.php" class="group bg-white shadow-lg p-8 rounded-xl hover:bg-purple-50 transition flex flex-col items-center text-center border border-transparent hover:border-purple-200">
+            <a href="verExpediente.php" class="group bg-white shadow-lg p-8 rounded-xl hover:bg-purple-50 transition flex flex-col items-center text-center border border-transparent hover:border-purple-200">
                 <div class="bg-purple-100 rounded-full p-4 mb-4 group-hover:bg-purple-200 transition">
                     <svg class="h-10 w-10 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6a2 2 0 002-2v-5a2 2 0 00-2-2h-2a2 2 0 00-2 2v5a2 2 0 002 2z" />
@@ -28,7 +28,7 @@
                 <h2 class="text-xl font-bold text-purple-800 mb-1">Mis Expedientes</h2>
                 <p class="text-gray-500">Consulta el estado de tus procesos.</p>
             </a>
-            <a href="verMisCitas.php" class="group bg-white shadow-lg p-8 rounded-xl hover:bg-purple-50 transition flex flex-col items-center text-center border border-transparent hover:border-purple-200">
+            <a href="verCitas.php" class="group bg-white shadow-lg p-8 rounded-xl hover:bg-purple-50 transition flex flex-col items-center text-center border border-transparent hover:border-purple-200">
                 <div class="bg-purple-100 rounded-full p-4 mb-4 group-hover:bg-purple-200 transition">
                     <svg class="h-10 w-10 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
