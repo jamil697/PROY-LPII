@@ -1,6 +1,6 @@
 <?php
 
-require_once "Conn.php";
+require_once __DIR__. "../../Config/Conn.php";
 
 class Abogado {
 

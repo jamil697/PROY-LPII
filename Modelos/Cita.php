@@ -1,6 +1,6 @@
 <?php
 
-require_once "config/conn.php";
+require_once __DIR__ . "/../config/conn.php";
 
 class cita {
 

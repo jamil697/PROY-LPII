@@ -1,9 +1,9 @@
 <?php
 
-require_once "Modelos/Expediente.php";
+require_once __DIR__ . '../../modelos/Expediente.php';
 
 class ExpedienteController {
-
+    
     public function guardar(array $datos) {
         $expediente = new Expediente();
         $resultado = $expediente->guardar(
@@ -14,9 +14,9 @@ class ExpedienteController {
         );
 
         if ($resultado != 0) {
-            return "Expediente registrado correctamente";
+            return "Expediente registrado correctamente.";
         } else {
-            return "Error: No se registró el expediente";
+            return "Error: No se registró el expediente.";
         }
     }
 
@@ -25,20 +25,20 @@ class ExpedienteController {
         return $expediente->mostrar();
     }
 
-    public function buscar($id) {
-        $expediente = new Expediente();
-        return $expediente->buscar($id);
-    }
-
     public function eliminar($id) {
         $expediente = new Expediente();
         $resultado = $expediente->eliminar($id);
 
         if ($resultado != 0) {
-            header("location: verExpedientes.php");
+            header("Location: verExpediente.php");
         } else {
-            return "Error: No se eliminó el expediente";
+            return "Error: No se eliminó el expediente.";
         }
+    }
+
+    public function buscar(int $id) {
+        $expediente = new Expediente();
+        return $expediente->buscar($id);
     }
 
     public function actualizar(array $datos) {
@@ -49,13 +49,13 @@ class ExpedienteController {
             $datos["descripcion"],
             $datos["id_abogado"],
             $datos["id_cliente"],
-            $datos["estado"]
+            $datos["estado"] // debe ser: abierto, cerrado o en_proceso
         );
 
         if ($resultado != 0) {
-            return "Expediente actualizado correctamente";
+            return "Expediente actualizado correctamente.";
         } else {
-            return "Error: No se pudo actualizar el expediente";
+            return "Error: No se pudo actualizar el expediente.";
         }
     }
 }

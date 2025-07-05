@@ -1,6 +1,6 @@
 <?php
 
-require_once "Modelos/Abogado.php";
+require_once __DIR__ . '../../modelos/Abogado.php';
 
 class AbogadoController {
 
