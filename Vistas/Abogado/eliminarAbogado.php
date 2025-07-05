@@ -4,14 +4,13 @@ require_once "../../layouts/header.php";
 
 $ac = new AbogadoController();
 
-// Si se confirmó eliminación (POST)
+// Si se confirmó la eliminación 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["id"])) {
     $id = $_POST["id"];
     echo $ac->eliminar($id);
     exit;
 }
 
-// Si es GET, mostrar la información del abogado
 $id = $_GET["id"];
 $datos = $ac->buscar($id);
 
