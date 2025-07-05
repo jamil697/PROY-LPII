@@ -1,6 +1,6 @@
 <?php
 
-require_once "Conn.php";
+require_once "../../Config/Conn.php";
 
 class Expediente {
     private $id;
