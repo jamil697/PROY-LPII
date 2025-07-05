@@ -65,7 +65,9 @@ if (isset($_SESSION["id"])) {
                     if ($usuario) {
                         $_SESSION["id"] = $usuario["id"];
                         $_SESSION["username"] = $usuario["username"];
-                        $_SESSION["tipo"] = $usuario["tipo"]; // Aquí se guarda el rol
+                        $_SESSION["tipo"] = $usuario["tipo"]; 
+                        $_SESSION["nombres"] = $usuario["nombres"];
+
                         header("Location: verUsuario.php");
                         exit;
                     } else {

@@ -68,6 +68,7 @@ class UsuarioController {
             $_SESSION['id'] = $userLogin['id'];
             $_SESSION['username'] = $userLogin['username'];
             $_SESSION['tipo'] = $userLogin['tipo'];
+             $_SESSION['nombres'] = $userLogin['nombres'];
 
             header("Location: dashboard.php");
             exit;

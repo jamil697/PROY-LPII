@@ -52,19 +52,23 @@ require_once "../../config/Conn.php";
             </div>
 
             <!-- Botón -->
-            <div class="pt-4 text-center">
+            <!-- Botones centrados -->
+            <div class="pt-6 flex justify-center gap-6">
+                <!-- Botón Registrar -->
                 <button type="submit"
-                    class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-2 rounded-xl text-sm font-semibold shadow transition duration-200 transform hover:-translate-y-1">
+                    class="w-40 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-2 rounded-xl text-sm font-semibold shadow transition duration-200 transform hover:-translate-y-1">
                     Registrar
                 </button>
-            </div>
-            <a href="verCita.php"
-                    class="inline-flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-7 py-2 rounded-xl font-bold shadow text-base transition transform hover:-translate-y-1 tracking-wide">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                <!-- Botón Cancelar -->
+                <a href="verCita.php"
+                    class="w-40 inline-flex justify-center items-center gap-2 bg-red-500 hover:bg-red-600 text-white py-2 rounded-xl text-sm font-semibold shadow transition duration-200 transform hover:-translate-y-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                     Cancelar
                 </a>
+            </div>
         </form>
     </div>
 </div>

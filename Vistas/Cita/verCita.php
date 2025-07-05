@@ -3,6 +3,7 @@ session_start();
 require_once "../../controladores/CitaController.php";
 require_once "../../layouts/header.php";
 
+$tipo_usuario = $_SESSION['tipo'];
 $cc = new CitaController();
 $citas = $cc->mostrar();
 ?>
@@ -37,16 +38,22 @@ $citas = $cc->mostrar();
         </div>
 
         <!-- New Appointment Button -->
-        <div class="mb-6">
+        <div class="mb-6 flex justify-between items-center">
+        <!-- Botón Registrar -->
+        <div>
             <a href="registrarCita.php" 
-               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-primary-dark hover:to-primary-light">
+            class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-primary-dark hover:to-primary-light">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
                 Registrar nueva cita
             </a>
+        </div>
+
+    <!-- Botón Volver -->
+        <div>
             <?php
-            $dashboard_url = "#"; // por defecto, en caso de que el rol no sea reconocido
+            $dashboard_url = "#";
             if ($tipo_usuario === 'admin') {
                 $dashboard_url = "../../Dashboards/dashboard_admin.php";
             } elseif ($tipo_usuario === 'abogado') {
@@ -55,14 +62,16 @@ $citas = $cc->mostrar();
                 $dashboard_url = "../../Dashboards/dashboard_cliente.php";
             }
             ?>
-
-            <a href="<?= $dashboard_url ?>" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white px-5 py-2 rounded-lg font-bold shadow-lg text-base transition transform hover:-translate-y-1">
+            <a href="<?= $dashboard_url ?>" 
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white px-5 py-2 rounded-lg font-bold shadow-lg text-base transition transform hover:-translate-y-1">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
-                Retroceder
+                Volver al Inicio
             </a>
+            </div>
         </div>
+
 
         <!-- Content -->
         <?php if (empty($citas)): ?>
