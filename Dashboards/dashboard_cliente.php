@@ -64,19 +64,6 @@ $nombreUsuario = $_SESSION['nombres'] ?? 'Cliente';
                 <h2 class="text-lg font-semibold text-purple-800 mb-1">Mis Citas</h2>
                 <p class="text-sm text-gray-500">Revisa tus citas agendadas con abogados.</p>
             </a>
-
-            <!-- Notificaciones -->
-            <a href="notificaciones.php"
-               class="group bg-white shadow-md p-6 rounded-lg hover:bg-purple-50 transition flex flex-col items-center text-center border border-transparent hover:border-purple-200">
-                <div class="bg-purple-100 rounded-full p-3 mb-3 group-hover:bg-purple-200 transition">
-                    <svg class="h-8 w-8 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 6 9.388 6 12v2.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                    </svg>
-                </div>
-                <h2 class="text-lg font-semibold text-purple-800 mb-1">Notificaciones</h2>
-                <p class="text-sm text-gray-500">Recibe novedades importantes de tu caso.</p>
-            </a>
         </div>
     </main>
 </div>
